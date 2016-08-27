@@ -1,10 +1,12 @@
 DONE
-Brainstorm.
+Cite 15 games.
+Cite 9 toys.
 TODO
-Jennifer plays on paper.
-Jennifer plays in Unity editor.
-Jennifer plays at http://finegamedesign.com/ancient-technology
-Sound effects.
+I play 3 toys manually.
+Jennifer plays 3 toys manually.
+Jennifer plays a toy in Unity editor.
+Jennifer plays a toy at http://finegamedesign.com/ancient-technology
+Sound effects.  
 Background music.
 Screenshot.
 Submit to Ludum Dare.

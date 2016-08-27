@@ -5,8 +5,13 @@ REFERENCE GAMES
 
 Montezuma Puzzle
     https://play.google.com/store/apps/details?id=com.eastoakteam.montezumapuzzle&hl=en
-Chinese Game of Go
 Tower of Goo
+Sudoku
+    http://julian.togelius.com/Moraglio2007Geometric.pdf
+    https://www.newscientist.com/article/dn20017-ancient-puzzle-gets-new-lease-of-geomagical-life/
+Chinese Game of Go
+Word Sudoku
+    https://blog.puzzlenation.com/tag/geometric-sudoku/
 Monument Valley
 Tetris
 Civilization
@@ -20,15 +25,35 @@ Senet --> Candyland
 Altered Beast
 Survival Game
 Metroidvania
+Morphos
+    https://itunes.apple.com/us/app/morphos-transforming-anagram/id924128008?mt=8
 Text Twist
     http://www.shockwave.com/gamelanding/texttwist2.jsp
 
 
 
+REFERENCE TOYS
+
+Geomagic squares
+    http://www.geomagicsquares.com/gallery.php
+    Given grid of components:  fill silhouette.
+    Sudoku:  Arrange the pieces such that they will fill the verticals and horizontals as squares.
+        http://www.geomagicsquares.com/gallery.php?page=32
+        http://www.geomagicsquares.com/gallery.php?page=33
+    Astrological symbol on each:
+        http://www.geomagicsquares.com/gallery.php?page=28
+Ion digs up dirt.
+Shovel.
+Blocks.
+Tower of Hanoi.
+
 REFERENCE STORY
 
 Tomb Raider
+    http://eclectic-review.blogspot.com/2012/02/tomb-raider-underworld-ps3.html
 Indiana Jones
+Ancient Adventures: Gift of Zeus
+    http://www.bigfishgames.com/blog/walkthrough/ancient-adventures-gift-of-zeus-walkthrough/
 Pyramids of Egypt
 Irrigation
 Monument building
@@ -36,3 +61,12 @@ Bridge building
 Tower building
 https://en.wikipedia.org/wiki/Ancient_technology
 
+REFERENCE ACTIVITIES
+
+Rotate fit grid together to unlock treasure
+Trace line with minimal turns [or retracing]
+    http://puzzles.com/puzzlesineducation/HandsOnPuzzles/InAncientGreeceT.htm
+    http://puzzles.com/puzzlesineducation/HandsOnPuzzles/InAncientGreeceSolT.htm
+15-square
+    http://www.dailymail.co.uk/home/moslive/article-1284909/Ten-greatest-Maths-puzzles.html
+Grid lock
