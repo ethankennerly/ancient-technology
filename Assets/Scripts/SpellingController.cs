@@ -36,6 +36,7 @@ namespace Finegamedesign.CityOfWords
 		{
 			ViewLetterButtons();
 			ViewPrompts();
+			ViewPrompt(model.selected, view.selected);
 		}
 
 		private void ViewLetterButtons()
@@ -55,13 +56,19 @@ namespace Finegamedesign.CityOfWords
 			{
 				var prompt = model.promptAndAnswers[index];
 				var promptView = view.promptAndAnswers[index];
-				TextView.SetText(promptView.promptText, prompt.promptText);
-				for (int letter = 0; letter < DataUtil.Length(prompt.answerTexts); letter++)
-				{
-					string a = prompt.answerTexts[letter];
-					TextView.SetText(promptView.answerTexts[letter], a);
-					SceneNodeView.SetVisible(promptView.answers[letter], model.empty != a); 
-				}
+				ViewPrompt(prompt, promptView);
+			}
+		}
+
+		private void ViewPrompt(PromptModel prompt, PromptView promptView)
+		{
+			TextView.SetText(promptView.promptText, prompt.promptText);
+			for (int letter = 0; letter < DataUtil.Length(prompt.answerTexts); letter++)
+			{
+				string a = prompt.answerTexts[letter];
+				TextView.SetText(promptView.answerTexts[letter], a);
+				bool isVisible = letter < DataUtil.Length(prompt.answerText);
+				SceneNodeView.SetVisible(promptView.answers[letter], isVisible); 
 			}
 		}
 	}

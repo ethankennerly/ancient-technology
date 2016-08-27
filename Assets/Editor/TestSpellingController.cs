@@ -25,11 +25,17 @@ namespace Finegamedesign.CityOfWords
 				SceneNodeView.GetVisible(controller.view.letterButtons[7]));
 			Assert.AreEqual(controller.model.promptAndAnswers[0].promptText,
 				TextView.GetText(controller.view.promptAndAnswers[0].promptText));
-			Assert.AreEqual(controller.model.promptAndAnswers[0].answerTexts[0],
+			Assert.AreEqual(controller.model.empty,
 				TextView.GetText(controller.view.promptAndAnswers[0].answerTexts[0]));
+			Assert.AreEqual(true,
+				SceneNodeView.GetVisible(
+					controller.view.promptAndAnswers[0].answers[0]));
 			Assert.AreEqual(false,
 				SceneNodeView.GetVisible(
-					controller.view.promptAndAnswers[3].answerTexts[7]));
+					controller.view.promptAndAnswers[3].answers[7]));
+			Assert.AreEqual(false,
+				SceneNodeView.GetVisible(
+					controller.view.selected.answers[0]));
 		}
 
 		[Test]

@@ -15,11 +15,14 @@ namespace Finegamedesign.CityOfWords
 		public int promptColumn = 2;
 		public int promptMax = 4;
 		public PromptModel[] promptAndAnswers;
+		public PromptModel selected;
 
 		public void Setup()
 		{
 			letterButtonTexts = new string[letterMax];
 			promptAndAnswers = new PromptModel[promptMax];
+			selected = new PromptModel();
+			selected.answerTexts = new string[letterMax];
 		}
 
 		public void Populate()
@@ -27,6 +30,7 @@ namespace Finegamedesign.CityOfWords
 			string[] row = table[tableIndex];
 			PopulateLetterButtons(row);
 			PopulatePrompts(row);
+			ClearSelected();
 		}
 
 		private void PopulateLetterButtons(string[] row)
@@ -52,21 +56,16 @@ namespace Finegamedesign.CityOfWords
 			{
 				var prompt = new PromptModel();
 				prompt.promptText = row[index];
-				prompt.answerTexts = new string[letterMax];
 				string answer = row[index + 1];
-				int letter;
-				for (letter = 0; letter < DataUtil.Length(answer); letter++)
-				{
-					prompt.answerTexts[letter] = answer[letter].ToString();
-				}
-				for (; letter < letterMax; letter++)
-				{
-					prompt.answerTexts[letter] = empty;
-				}
+				prompt.PopulateAnswer(answer, letterMax, empty);
 				int p = (int)((index - promptColumn) / 2);
-				DebugUtil.Log(answer + " " + p);
 				promptAndAnswers[p] = prompt;
 			}
+		}
+
+		private void ClearSelected()
+		{
+			DataUtil.Clear(selected.answerTexts);
 		}
 	}
 }
