@@ -4,12 +4,12 @@ Cite 9 toys.
 I manually play synogram, geomagic squares, word sudoku.
 Jennifer enjoys synogram, gives up on geomagic square.
 Wireframe spell, build, complete.
+Layout spelling.
 
 TODO
-Structure spelling animation.
-Structure spelling data.
-Structure building animation.
-Structure building data.
+See spelling data.
+Layout building.
+see building data.
 Jennifer sees wireframe.
 Jennifer spells tree in Unity editor.
 Jennifer builds rotunda in Unity editor.
@@ -19,3 +19,4 @@ Background music.
 Screenshot.
 Submit to Ludum Dare.
 Read comment.
+Jennifer taps hint button.  Reveal next letter of next word.
