@@ -48,5 +48,39 @@ namespace Finegamedesign.CityOfWords
 			Assert.AreEqual("prompt", table[0][2]);
 			Assert.AreEqual("answer", table[0][3]);
 		}
+
+		[Test]
+		public void UpdateButtonSelectedToggles()
+		{
+			var controller = new SpellingController();
+			controller.Setup();
+			controller.Populate();
+			controller.Update();
+			Assert.AreEqual(false,
+				SceneNodeView.GetVisible(
+					controller.view.selected.answers[0]));
+			var button0 = controller.view.letterButtons[0];
+			controller.buttons.view.Down(button0);
+			controller.Update();
+			Assert.AreEqual(true,
+				SceneNodeView.GetVisible(
+					controller.view.selected.answers[0]));
+			Assert.AreEqual(controller.model.letterButtonTexts[0],
+				TextView.GetText(
+					controller.view.selected.answerTexts[0]));
+			controller.buttons.view.Down(button0);
+			controller.Update();
+			Assert.AreEqual(false,
+				SceneNodeView.GetVisible(
+					controller.view.selected.answers[0]));
+			controller.buttons.view.Down(button0);
+			controller.Update();
+			Assert.AreEqual(true,
+				SceneNodeView.GetVisible(
+					controller.view.selected.answers[0]));
+			Assert.AreEqual(controller.model.letterButtonTexts[0],
+				TextView.GetText(
+					controller.view.selected.answerTexts[0]));
+		}
 	}
 }

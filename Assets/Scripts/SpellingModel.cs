@@ -16,6 +16,7 @@ namespace Finegamedesign.CityOfWords
 		public int promptMax = 4;
 		public PromptModel[] promptAndAnswers;
 		public PromptModel selected;
+		public bool[] isLetterSelects;
 
 		public void Setup()
 		{
@@ -66,6 +67,26 @@ namespace Finegamedesign.CityOfWords
 		private void ClearSelected()
 		{
 			DataUtil.Clear(selected.answerTexts);
+			isLetterSelects = new bool[letterMax];
+		}
+
+		public bool Toggle(int letterButtonIndex)
+		{
+			bool isSelectedNext = !(isLetterSelects[letterButtonIndex]);
+			string letter = letterButtonTexts[letterButtonIndex];
+			int length = DataUtil.Length(selected.answerText);
+			if (isSelectedNext)
+			{
+				selected.answerText += letter;
+				selected.answerTexts[length] = letter;
+			}
+			else
+			{
+				selected.answerTexts[length] = empty;
+				selected.answerText = StringUtil.RemoveEnd(selected.answerText);
+			}
+			isLetterSelects[letterButtonIndex] = isSelectedNext;
+			return isSelectedNext;
 		}
 	}
 }

@@ -7,12 +7,17 @@ namespace Finegamedesign.CityOfWords
 	{
 		public SpellingModel model = new SpellingModel();
 		public SpellingView view;
+		public ButtonController buttons = new ButtonController();
 
 		public void Setup()
 		{
 			model.table = Load();
 			model.Setup();
 			view = (SpellingView) SceneNodeView.FindObjectOfType(typeof(SpellingView));
+			for (int index = 0; index < DataUtil.Length(view.letterButtons); index++)
+			{
+				buttons.view.Listen(view.letterButtons[index]);
+			}
 		}
 
 		public string[][] Load()
@@ -27,8 +32,19 @@ namespace Finegamedesign.CityOfWords
 			UpdateView();
 		}
 
+		private void UpdateButtons()
+		{
+			buttons.Update();
+			int letterButtonIndex = DataUtil.IndexOf(view.letterButtons, buttons.view.target);
+			if (0 <= letterButtonIndex)
+			{
+				model.Toggle(letterButtonIndex);
+			}
+		}
+
 		public void Update()
 		{
+			UpdateButtons();
 			UpdateView();
 		}
 
