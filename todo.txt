@@ -5,9 +5,11 @@ I manually play synogram, geomagic squares, word sudoku.
 Jennifer enjoys synogram, gives up on geomagic square.
 
 TODO
-Jennifer plays a toy in Unity editor.
-Jennifer plays a toy at http://finegamedesign.com/ancient-technology
+Screenplay.
+Jennifer plays synogram in Unity editor.
+Jennifer plays synogram at http://finegamedesign.com/ancient-technology
 Sound effects.  
 Background music.
 Screenshot.
 Submit to Ludum Dare.
+Read comment.
