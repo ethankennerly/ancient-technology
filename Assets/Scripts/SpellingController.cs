@@ -34,12 +34,34 @@ namespace Finegamedesign.CityOfWords
 
 		private void UpdateView()
 		{
+			ViewLetterButtons();
+			ViewPrompts();
+		}
+
+		private void ViewLetterButtons()
+		{
 			for (int index = 0; index < DataUtil.Length(model.letterButtonTexts); index++)
 			{
 				string letter = model.letterButtonTexts[index];
 				var letterView = view.letterButtonTexts[index];
 				TextView.SetText(letterView, letter);
 				SceneNodeView.SetVisible(view.letterButtons[index], model.empty != letter);
+			}
+		}
+
+		private void ViewPrompts()
+		{
+			for (int index = 0; index < DataUtil.Length(model.promptAndAnswers); index++)
+			{
+				var prompt = model.promptAndAnswers[index];
+				var promptView = view.promptAndAnswers[index];
+				TextView.SetText(promptView.promptText, prompt.promptText);
+				for (int letter = 0; letter < DataUtil.Length(prompt.answerTexts); letter++)
+				{
+					string a = prompt.answerTexts[letter];
+					TextView.SetText(promptView.answerTexts[letter], a);
+					SceneNodeView.SetVisible(promptView.answers[letter], model.empty != a); 
+				}
 			}
 		}
 	}

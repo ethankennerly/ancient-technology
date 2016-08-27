@@ -14,13 +14,22 @@ namespace Finegamedesign.CityOfWords
 		}
 
 		[Test]
-		public void PopulateLetterButtonTextsReflectModel()
+		public void PopulateMatchesFirstLetter()
 		{
 			var controller = new SpellingController();
 			controller.Setup();
 			controller.Populate();
 			Assert.AreEqual(controller.model.letterButtonTexts[0],
 				TextView.GetText(controller.view.letterButtonTexts[0]));
+			Assert.AreEqual(false,
+				SceneNodeView.GetVisible(controller.view.letterButtons[7]));
+			Assert.AreEqual(controller.model.promptAndAnswers[0].promptText,
+				TextView.GetText(controller.view.promptAndAnswers[0].promptText));
+			Assert.AreEqual(controller.model.promptAndAnswers[0].answerTexts[0],
+				TextView.GetText(controller.view.promptAndAnswers[0].answerTexts[0]));
+			Assert.AreEqual(false,
+				SceneNodeView.GetVisible(
+					controller.view.promptAndAnswers[3].answerTexts[7]));
 		}
 
 		[Test]
