@@ -1,0 +1,10 @@
+DONE
+Brainstorm.
+TODO
+Jennifer plays on paper.
+Jennifer plays in Unity editor.
+Jennifer plays at http://finegamedesign.com/ancient-technology
+Sound effects.
+Background music.
+Screenshot.
+Submit to Ludum Dare.
