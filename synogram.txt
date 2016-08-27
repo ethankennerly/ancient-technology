@@ -9,7 +9,7 @@ EAGLE ______
 MIMIC ______
 
 
-FALCON STATUE
+Icon of a FALCON STATUE.
 
 
 
@@ -42,7 +42,7 @@ ______	constructs
 _______	plazas
 
 
-ROTUNDA
+Icon of a ROTUNDA.
 
 
 
@@ -71,13 +71,13 @@ ALPHABET	1409 B.C.
 GIIN
 RTW
 
-____	limb
+____	arm
+____	branch
 ____	summons
-_____	angering
 _______	cuneiform
 
 
 
-CUNEIFORM TABLET
+Icon of a CUNEIFORM TABLET.
 
 
