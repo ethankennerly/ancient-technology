@@ -3,9 +3,9 @@ Cite 15 games.
 Cite 9 toys.
 I manually play synogram, geomagic squares, word sudoku.
 Jennifer enjoys synogram, gives up on geomagic square.
+Wireframe spell, build, complete.
 
 TODO
-Screenplay.
 Jennifer plays synogram in Unity editor.
 Jennifer plays synogram at http://finegamedesign.com/ancient-technology
 Sound effects.  
