@@ -1,0 +1,13 @@
+http://www.geomagicsquares.com/gallery.php?page=2
+
+Fit these 3 pieces into 3 squares.
+
+Fit the 9 pieces into 3 squares at the right:  (red, green, blue), 3 pieces each.
+
+This tints pieces to their square's hue:  red, green, blue.
+
+After all puzzles done:  Rainbow mode
+
+Fit the 9 pieces into 3 rainbow squares at the top, using one of each color.
+
+

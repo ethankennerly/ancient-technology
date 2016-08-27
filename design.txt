@@ -3,15 +3,20 @@ Ancient Technology
 
 REFERENCE GAMES
 
+Word Sudoku
+    https://blog.puzzlenation.com/tag/geometric-sudoku/
 Montezuma Puzzle
     https://play.google.com/store/apps/details?id=com.eastoakteam.montezumapuzzle&hl=en
 Tower of Goo
+Candy Crush
+AlphaBetty Saga
+Falling blocks.  Totem Tower
+Word Sudoku
+    http://dkmgames.com/WordSudoku.htm#
 Sudoku
     http://julian.togelius.com/Moraglio2007Geometric.pdf
     https://www.newscientist.com/article/dn20017-ancient-puzzle-gets-new-lease-of-geomagical-life/
 Chinese Game of Go
-Word Sudoku
-    https://blog.puzzlenation.com/tag/geometric-sudoku/
 Monument Valley
 Tetris
 Civilization
@@ -25,8 +30,10 @@ Senet --> Candyland
 Altered Beast
 Survival Game
 Metroidvania
-Morphos
+Morphos with hints
     https://itunes.apple.com/us/app/morphos-transforming-anagram/id924128008?mt=8
+    subwords:
+    http://anagramscramble.com/anagrams-of/raptor
 Text Twist
     http://www.shockwave.com/gamelanding/texttwist2.jsp
 
@@ -40,8 +47,12 @@ Geomagic squares
     Sudoku:  Arrange the pieces such that they will fill the verticals and horizontals as squares.
         http://www.geomagicsquares.com/gallery.php?page=32
         http://www.geomagicsquares.com/gallery.php?page=33
+    Easier:
+        3-horizontal.  3-vertical.  3-diagonal.
+    Partial solution arranged, like picross
     Astrological symbol on each:
         http://www.geomagicsquares.com/gallery.php?page=28
+Picross.
 Ion digs up dirt.
 Shovel.
 Blocks.
