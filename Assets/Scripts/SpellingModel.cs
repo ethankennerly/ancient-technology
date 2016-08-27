@@ -2,6 +2,7 @@ using Finegamedesign.Utils;
 
 namespace Finegamedesign.CityOfWords
 {
+	[System.Serializable]
 	public sealed class SpellingModel
 	{
 		public SpellingView view;

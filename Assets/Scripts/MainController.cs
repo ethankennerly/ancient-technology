@@ -2,6 +2,7 @@ using Finegamedesign.Utils;
 
 namespace Finegamedesign.CityOfWords
 {
+	[System.Serializable]
 	public sealed class MainController
 	{
 		public SpellingController spelling = new SpellingController();
@@ -9,6 +10,7 @@ namespace Finegamedesign.CityOfWords
 		public void Setup()
 		{
 			spelling.Setup();
+			spelling.Populate();
 		}
 
 		public void Update()
