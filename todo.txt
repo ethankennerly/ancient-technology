@@ -6,8 +6,14 @@ Jennifer enjoys synogram, gives up on geomagic square.
 Wireframe spell, build, complete.
 
 TODO
-Jennifer plays synogram in Unity editor.
-Jennifer plays synogram at http://finegamedesign.com/ancient-technology
+Structure spelling animation.
+Structure spelling data.
+Structure building animation.
+Structure building data.
+Jennifer sees wireframe.
+Jennifer spells tree in Unity editor.
+Jennifer builds rotunda in Unity editor.
+Jennifer plays at http://finegamedesign.com/ancient-technology
 Sound effects.  
 Background music.
 Screenshot.

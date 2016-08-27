@@ -9,12 +9,32 @@ EAGLE ______
 MIMIC ______
 
 
-At the grass plot, a hammer pounds.  FALCON STATUE.
+FALCON STATUE
 
 
 
-TECN
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+MASONRY    	1594 B.C.
+
 RSE
+TECN
 
 ____	oak
 _____	top
@@ -22,10 +42,31 @@ ______	constructs
 _______	plazas
 
 
+ROTUNDA
 
-You discovered MASONRY.
 
-At the grassy plot, a hammer pounds.  ROTUNDA.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ALPHABET	1409 B.C.
+
 
 GIIN
 RTW
@@ -37,8 +78,6 @@ _______	cuneiform
 
 
 
-You discovered ALPHABET.
-
-At the grassy plot, a hammer pounds.  CUNEIFORM TABLET.
+CUNEIFORM TABLET
 
 
