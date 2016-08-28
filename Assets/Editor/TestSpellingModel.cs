@@ -70,13 +70,13 @@ namespace Finegamedesign.CityOfWords
 				model.promptAndAnswers[3].answerText);
 			model.UpdateAnswer();
 			Assert.AreEqual(false, model.isAnswerAllNow);
-			model.promptAndAnswers[0].RevealAnswer(model.empty);
-			model.promptAndAnswers[2].RevealAnswer(model.empty);
-			model.promptAndAnswers[3].RevealAnswer(model.empty);
+			model.promptAndAnswers[0].ShowAnswer(true);
+			model.promptAndAnswers[2].ShowAnswer(true);
+			model.promptAndAnswers[3].ShowAnswer(true);
 			model.UpdateAnswer();
 			Assert.AreEqual(false, model.isAnswerAllNow);
 			Assert.AreEqual(3, model.answerCount);
-			model.promptAndAnswers[1].RevealAnswer(model.empty);
+			model.promptAndAnswers[1].ShowAnswer(true);
 			model.UpdateAnswer();
 			Assert.AreEqual(true, model.isAnswerAllNow);
 			model.isAnswerAllNow = false;
@@ -89,12 +89,12 @@ namespace Finegamedesign.CityOfWords
 				model.promptAndAnswers[2].answerText);
 			Assert.AreEqual(model.empty, 
 				model.promptAndAnswers[3].answerText);
-			model.promptAndAnswers[0].RevealAnswer(model.empty);
-			model.promptAndAnswers[1].RevealAnswer(model.empty);
+			model.promptAndAnswers[0].ShowAnswer(true);
+			model.promptAndAnswers[1].ShowAnswer(true);
 			model.UpdateAnswer();
 			Assert.AreEqual(2, model.answerCount);
 			Assert.AreEqual(false, model.isAnswerAllNow);
-			model.promptAndAnswers[2].RevealAnswer(model.empty);
+			model.promptAndAnswers[2].ShowAnswer(true);
 			model.UpdateAnswer();
 			Assert.AreEqual(true, model.isAnswerAllNow);
 			Assert.AreEqual(3, model.answerCount);
@@ -104,12 +104,13 @@ namespace Finegamedesign.CityOfWords
 		}
 
 		[Test]
-		public void HintNextLetterScoreDown20()
+		public void HintNextLetterAndScoreDown20()
 		{
 			var model = new SpellingModel();
 			model.table = SpellingController.Load("test_words.csv");
 			model.Setup();
 			model.Populate();
+			int score = model.score;
 			var prompts = model.promptAndAnswers;
 			Assert.AreEqual("PART", prompts[0].answerText);
 			Assert.AreEqual("TRAP", prompts[1].answerText);
@@ -122,11 +123,36 @@ namespace Finegamedesign.CityOfWords
 			Assert.AreEqual(model.empty, prompts[0].answerTexts[1]);
 			Assert.AreEqual(model.empty, prompts[1].answerTexts[0]);
 			Assert.AreEqual(model.empty, prompts[1].answerTexts[1]);
+			Assert.AreEqual(score + model.scorePerHint, model.score);
 			model.Hint();
 			Assert.AreEqual("P", prompts[0].answerTexts[0]);
 			Assert.AreEqual(model.empty, prompts[0].answerTexts[1]);
 			Assert.AreEqual("T", prompts[1].answerTexts[0]);
 			Assert.AreEqual(model.empty, prompts[1].answerTexts[1]);
+			Assert.AreEqual(score + 2 * model.scorePerHint, model.score);
+			prompts[1].ShowAnswer(true);
+			prompts[2].ShowAnswer(true);
+			prompts[3].ShowAnswer(true);
+			model.UpdateAnswer();
+			Assert.AreEqual(false, model.isAnswerAllNow);
+			Assert.AreEqual(3, model.answerCount);
+			model.Hint();
+			Assert.AreEqual(score + 3 * model.scorePerHint, model.score);
+			Assert.AreEqual("P", prompts[0].answerTexts[0]);
+			Assert.AreEqual("A", prompts[0].answerTexts[1]);
+			Assert.AreEqual(model.empty, prompts[0].answerTexts[2]);
+			Assert.AreEqual(model.empty, prompts[0].answerTexts[3]);
+			model.Hint();
+			Assert.AreEqual("R", prompts[0].answerTexts[2]);
+			Assert.AreEqual(score + 4 * model.scorePerHint, model.score);
+			model.Hint();
+			Assert.AreEqual("T", prompts[0].answerTexts[3]);
+			Assert.AreEqual(score + 5 * model.scorePerHint, model.score);
+			model.UpdateAnswer();
+			Assert.AreEqual(4, model.answerCount);
+			Assert.AreEqual(true, model.isAnswerAllNow);
+			model.Hint();
+			Assert.AreEqual(score + 5 * model.scorePerHint, model.score);
 		}
 	}
 }

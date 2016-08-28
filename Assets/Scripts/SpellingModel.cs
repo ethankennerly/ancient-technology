@@ -8,13 +8,14 @@ namespace Finegamedesign.CityOfWords
 		public SpellingView view;
 		public string[][] table;
 		public int contentIndex = 0;
-		public string empty = "";
+		public string empty = PromptModel.empty;
 		public string[] letterButtonTexts;
 		public int letterMax = 8;
 		public int lettersColumn = 1;
 		public int promptColumn = 2;
 		public int promptMax = 4;
 		public int score = 2000;
+		public int scorePerHint = -20;
 		public PromptModel[] promptAndAnswers;
 		public PromptModel selected;
 		public bool[] isLetterSelects;
@@ -69,7 +70,7 @@ namespace Finegamedesign.CityOfWords
 				{
 					prompt.promptText = row[index];
 					string answer = row[index + 1];
-					prompt.PopulateAnswer(answer, letterMax, empty);
+					prompt.PopulateAnswer(answer, letterMax);
 				}
 				promptAndAnswers[p] = prompt;
 			}
@@ -87,7 +88,7 @@ namespace Finegamedesign.CityOfWords
 				if (answer == prompt.answerText && answer != empty)
 				{
 					isAnswerNow = true;
-					prompt.RevealAnswer(empty);
+					prompt.ShowAnswer(true);
 					ClearSelected();
 				}
 				else if (prompt.isAnswerVisibleNow)
@@ -183,6 +184,10 @@ namespace Finegamedesign.CityOfWords
 
 		public void Hint()
 		{
+			if (PromptModel.ShowNextLetter(promptAndAnswers))
+			{
+				score += scorePerHint;
+			}
 		}
 
 		public void Exit()

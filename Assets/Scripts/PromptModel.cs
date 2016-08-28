@@ -4,42 +4,69 @@ namespace Finegamedesign.CityOfWords
 {
 	public sealed class PromptModel
 	{
+		public static string empty = "";
+
+		public static bool ShowNextLetter(PromptModel[] prompts)
+		{
+			bool isNow = false;
+			int letterMax = DataUtil.Length(prompts[0].answerTexts);
+			for (int letter = 0; !isNow && letter < letterMax; letter++)
+			{
+				for (int row = 0; !isNow && row < DataUtil.Length(prompts); row++)
+				{
+					PromptModel prompt = prompts[row];
+					int length = DataUtil.Length(prompt.answerText);
+					if (empty == prompt.answerTexts[letter] 
+					&& letter < length)
+					{
+						if (letter == length - 1)
+						{
+							prompt.ShowAnswer(true);
+						}
+						else
+						{
+							prompt.ShowLetter(letter, true);
+						}
+						isNow = true;
+					}
+				}
+			}
+			return isNow;
+		}
+
 		public string[] answerTexts = new string[0];
 		public string answerText = "";
 		public bool isAnswerVisible = false;
 		public bool isAnswerVisibleNow = false;
 		public string promptText = "";
 
-		public void PopulateAnswer(string answer, int letterMax, string empty)
+		public void PopulateAnswer(string answer, int letterMax)
 		{
 			answerTexts = new string[letterMax];
 			answerText = answer;
-			int letter;
-			for (letter = 0; letter < DataUtil.Length(answer); letter++)
-			{
-				answerTexts[letter] = empty;
-			}
-			for (; letter < letterMax; letter++)
-			{
-				answerTexts[letter] = empty;
-			}
-			isAnswerVisible = false;
-			isAnswerVisibleNow = false;
+			ShowAnswer(false);
 		}
 
-		public void RevealAnswer(string empty)
+		private void ShowLetter(int letter, bool isVisible)
 		{
-			isAnswerVisible = true;
-			isAnswerVisibleNow = true;
-			string answer = answerText;
-			int letter;
-			for (letter = 0; letter < DataUtil.Length(answer); letter++)
+			if (isVisible)
 			{
-				answerTexts[letter] = answer[letter].ToString();
+				answerTexts[letter] = answerText[letter].ToString();
 			}
-			for (; letter < DataUtil.Length(answerTexts); letter++)
+			else
 			{
 				answerTexts[letter] = empty;
+			}
+		}
+
+		public void ShowAnswer(bool isVisible)
+		{
+			isAnswerVisible = isVisible;
+			isAnswerVisibleNow = isVisible;
+			for (int letter = 0; letter < DataUtil.Length(answerTexts); letter++)
+			{
+				ShowLetter(letter, 
+					isVisible && letter < DataUtil.Length(answerText));
 			}
 		}
 	}

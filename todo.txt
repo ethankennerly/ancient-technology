@@ -15,10 +15,10 @@ Spell all words.  Reveal image on building panel.
 Spell one word.  Adjacent buildings available.
 Test case:  2016-08-28 Jennifer expects to select word and type.
 	Read "Tap letters to spell the word related to the prompt"
+Test case:  2016-08-27 Crest. Twig.  Jennifer Russ expects hint!!!
+	Jennifer taps hint button.  Reveal next letter of next word.
 
 TODO
-Test case:  2016-08-27 Jennifer Russ expects hint!!!
-	Jennifer taps hint button.  Reveal next letter of next word.
 View topic.
 Return to partial or complete.  See those words completed.
 Layout building.
@@ -37,6 +37,8 @@ Read comment.
 Animate spell word.
 Animate spell all words.
 Animate complete.
+Test case:  2016-08-27 Crest. Twig.  Jennifer Russ expects hint!!!
+	More related prompt.
 If already completed words, do not subtract score.
 If already completed words, spell any words.
 Background music.
