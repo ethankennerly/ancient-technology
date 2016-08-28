@@ -7,12 +7,13 @@ namespace Finegamedesign.CityOfWords
 	{
 		public SpellingView view;
 		public string[][] table;
+		public int topicColumn = 0;
+		public int lettersColumn = 1;
+		public int promptColumn = 2;
 		public int contentIndex = 0;
 		public string empty = PromptModel.empty;
 		public string[] letterButtonTexts;
 		public int letterMax = 8;
-		public int lettersColumn = 1;
-		public int promptColumn = 2;
 		public int promptMax = 4;
 		public int score = 2000;
 		public int scorePerHint = -20;
@@ -23,6 +24,7 @@ namespace Finegamedesign.CityOfWords
 		public bool isExitNow = false;
 		public bool isAnswerAllNow = false;
 		public int answerCount = 0;
+		public string topicText = "";
 		private int tableIndex = 1;
 
 		public void Setup()
@@ -39,6 +41,7 @@ namespace Finegamedesign.CityOfWords
 			string[] row = table[tableIndex];
 			PopulateLetterButtons(row);
 			PopulatePrompts(row);
+			topicText = row[topicColumn];
 			ClearSelected();
 		}
 

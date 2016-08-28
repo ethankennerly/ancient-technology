@@ -65,6 +65,7 @@ namespace Finegamedesign.CityOfWords
 			ViewPrompts();
 			ViewPrompt(model.selected, view.selected);
 			ViewScore();
+			TextView.SetText(view.topicText, model.topicText);
 		}
 
 		private void ViewLetterButtons()

@@ -27,6 +27,17 @@ namespace Finegamedesign.CityOfWords
 		}
 
 		[Test]
+		public void PopulateTopicText()
+		{
+			var model = new SpellingModel();
+			model.table = SpellingController.Load("test_words.csv");
+			Assert.AreEqual("", model.topicText);
+			model.Setup();
+			model.Populate();
+			Assert.AreEqual("FALCONRY", model.topicText);
+		}
+
+		[Test]
 		public void UpdateAnswer()
 		{
 			var model = new SpellingModel();
