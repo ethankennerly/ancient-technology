@@ -10,9 +10,10 @@ See spelling data.
 Tap letter.  Reduce score by 1; score at least 0.
 Spell word.  Reveal that word.
 Spell word.  Reveal that word.  And Untoggle letters.
+Spell all words.  Return to building.
 
 TODO
-Spell all words.  Return and reveal image on building panel.
+Spell all words.  Reveal image on building panel.
 Spell one word.  Adjacent buildings available.
 Layout building.
 See building data.

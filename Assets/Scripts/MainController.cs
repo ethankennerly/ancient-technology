@@ -26,7 +26,13 @@ namespace Finegamedesign.CityOfWords
 		{
 			spelling.Update();
 			building.Update();
-			if (spelling.model.isExitNow)
+			if (building.model.isSelectNow)
+			{
+				building.model.isSelectNow = false;
+				spelling.model.contentIndex = building.model.selectedIndex;
+				spelling.Populate();
+			}
+			else if (spelling.model.isExitNow)
 			{
 				spelling.model.isExitNow = false;
 				building.model.state = "spellingToBuilding";
@@ -35,6 +41,7 @@ namespace Finegamedesign.CityOfWords
 			{
 				spelling.model.isAnswerAllNow = false;
 				building.model.state = "spellingToBuilding";
+				building.model.Complete();
 			}
 			AnimationView.SetState(view.state, building.model.state);
 		}
