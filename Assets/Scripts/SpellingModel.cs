@@ -198,8 +198,6 @@ namespace Finegamedesign.CityOfWords
 			}
 			else
 			{
-				selected.answerTexts[length] = empty;
-				letterButtonsSelected[length] = -1;
 				int last = DataUtil.LastIndexOf(selected.answerText, letter);
 				if (0 <= last)
 				{
@@ -219,6 +217,8 @@ namespace Finegamedesign.CityOfWords
 					DebugUtil.Log("SpellingModel.Toggle: Did not expect <" 
 						+ letter + "> was not in <" + selected.answerText + ">");
 				}
+				selected.answerTexts[length - 1] = empty;
+				letterButtonsSelected[length - 1] = -1;
 			}
 			isLetterSelects[letterButtonIndex] = isSelectedNext;
 			return isSelectedNext;

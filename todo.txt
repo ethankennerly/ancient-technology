@@ -24,22 +24,28 @@ Return to partial or complete.  See those words completed.
 Jennifer spells tree in Unity editor.
 Return to words.  Load words completed so far.
 If already completed words, do not subtract score.
+I build rotunda in Unity editor.
+I play at http://finegamedesign.com/cityofwords/
+Submit to Ludum Dare.
 
 TODO
-Layout buildings in a grid.
+6 entries of 4 words on ancient technology
+Layout 6 buildings in a grid.
 Spell all words.  Reveal image in spelling view.
-I build rotunda in Unity editor.
-I build 5 words.
+I build 6 words.
+Read comment.
 Sound effects.  
 Screenshot.
-Submit to Ludum Dare.
-Read comment.
 Animate spell word.
 Animate spell all words.
 Animate complete.
+No bold font.
+Crisp font.
+Layer effects.
 Jennifer plays at http://finegamedesign.com/cityofwords
 Test case:  2016-08-27 Crest. Twig.  Jennifer Russ expects hint!!!
 	More related prompt.
 If already completed words, spell any words.
 Background music.
+Fit full screen.
 With each word spelled, shuffle letters.

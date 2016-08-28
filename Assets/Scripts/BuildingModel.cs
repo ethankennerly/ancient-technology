@@ -6,7 +6,7 @@ namespace Finegamedesign.CityOfWords
 	{
 		public string[] cellStates;
 		public int cellCount = 0;
-		// TODO public int columnCount = 4;
+		public int columnCount = 3;
 		public int selectedIndex = -1;
 		public bool isSelectNow = false;
 		public string state = "building";
@@ -49,8 +49,17 @@ namespace Finegamedesign.CityOfWords
 
 		public void UnlockAdjacent()
 		{
-			UnlockCell(selectedIndex - 1);
-			UnlockCell(selectedIndex + 1);
+			int column = selectedIndex % columnCount;
+			if (1 <= column)
+			{
+				UnlockCell(selectedIndex - 1);
+			}
+			if (column + 1 < columnCount)
+			{
+				UnlockCell(selectedIndex + 1);
+			}
+			UnlockCell(selectedIndex - columnCount);
+			UnlockCell(selectedIndex + columnCount);
 		}
 	}
 }

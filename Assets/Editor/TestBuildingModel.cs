@@ -43,10 +43,11 @@ namespace Finegamedesign.CityOfWords
 		}
 
 		[Test]
-		public void UnlockAdjacent()
+		public void UnlockAdjacentHorizontal()
 		{
 			var model = new BuildingModel();
 			model.cellCount = 6;
+			model.columnCount = 6;
 			model.Setup();
 			model.Select(0);
 			model.UnlockAdjacent();
@@ -67,6 +68,28 @@ namespace Finegamedesign.CityOfWords
 			model.Select(4);
 			model.UnlockAdjacent();
 			Assert.AreEqual("complete", model.cellStates[5]);
+		}
+
+		[Test]
+		public void UnlockAdjacentVertical()
+		{
+			var model = new BuildingModel();
+			model.cellCount = 6;
+			model.columnCount = 3;
+			model.Setup();
+			model.cellStates[2] = "available";
+			model.Select(2);
+			model.UnlockAdjacent();
+			Assert.AreEqual("available", model.cellStates[1]);
+			Assert.AreEqual("available", model.cellStates[5]);
+			Assert.AreEqual("none", model.cellStates[3]);
+			model.Setup();
+			model.cellStates[3] = "available";
+			model.Select(3);
+			model.UnlockAdjacent();
+			Assert.AreEqual("available", model.cellStates[0]);
+			Assert.AreEqual("available", model.cellStates[4]);
+			Assert.AreEqual("none", model.cellStates[2]);
 		}
 	}
 }

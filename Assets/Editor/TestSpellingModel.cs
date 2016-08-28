@@ -211,5 +211,23 @@ namespace Finegamedesign.CityOfWords
 				Assert.AreEqual(true, model.isLetterSelects[0]);
 			}
 		}
+
+		[Test]
+		public void ToggleLetterMax()
+		{
+			var model = new SpellingModel();
+			model.table = SpellingController.Load("test_words.csv");
+			model.letterMax = 8;
+			model.Setup();
+			model.contentIndex = 2;
+			model.Populate();
+			for (int letter = 0; letter < model.letterMax; letter++)
+			{
+				model.Toggle(letter);
+			}
+			Assert.AreEqual(true, model.isLetterSelects[7]);
+			model.Toggle(model.letterMax - 1);
+			Assert.AreEqual(false, model.isLetterSelects[7]);
+		}
 	}
 }
