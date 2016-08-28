@@ -1,4 +1,5 @@
 ﻿using NUnit.Framework;
+using UnityEngine.UI;
 using Finegamedesign.Utils;
 
 namespace Finegamedesign.CityOfWords
@@ -57,6 +58,9 @@ namespace Finegamedesign.CityOfWords
 			Assert.AreEqual(controller.model.letterButtonTexts[index],
 				TextView.GetText(
 					controller.view.selected.answerTexts[length]));
+			Assert.AreEqual(true,
+				ToggleView.IsOn(
+					controller.view.letterButtons[index]));
 		}
 
 		private SpellingController AssertButtonSelectedToggles()
@@ -116,6 +120,9 @@ namespace Finegamedesign.CityOfWords
 			Assert.AreEqual(false,
 				SceneNodeView.GetVisible(
 					controller.view.selected.answers[1]));
+			Assert.AreEqual(false,
+				ToggleView.IsOn(
+					controller.view.letterButtons[1]));
 			AssertLetterSelected(controller, 3, 0);
 			controller.buttons.view.Down(buttons[3]);
 			controller.Update();

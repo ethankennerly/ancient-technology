@@ -63,6 +63,7 @@ namespace Finegamedesign.CityOfWords
 				var letterView = view.letterButtonTexts[index];
 				TextView.SetText(letterView, letter);
 				SceneNodeView.SetVisible(view.letterButtons[index], model.empty != letter);
+				ToggleView.SetIsOn(view.letterButtons[index], model.isLetterSelects[index]);
 			}
 		}
 
