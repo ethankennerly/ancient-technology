@@ -10,6 +10,7 @@ namespace Finegamedesign.CityOfWords
 		{
 			var model = new SpellingModel();
 			model.table = SpellingController.Load("test_words.csv");
+			model.score = 2000;
 			model.Setup();
 			Assert.AreEqual(2000, model.score);
 			model.Populate();
@@ -112,6 +113,51 @@ namespace Finegamedesign.CityOfWords
 			model.isAnswerAllNow = false;
 			model.UpdateAnswer();
 			Assert.AreEqual(false, model.isAnswerAllNow);
+		}
+
+		[Test]
+		public void UpdateAnswerWritThenWriting()
+		{
+			var model = new SpellingModel();
+			model.table = SpellingController.Load("test_words.csv");
+			model.Setup();
+			model.contentIndex = 3;
+			model.Populate();
+			Assert.AreEqual("WRIT", 
+				model.promptAndAnswers[2].answerText);
+			Assert.AreEqual("WRITING", 
+				model.promptAndAnswers[3].answerText);
+			model.selected.answerText = "WRIT";
+			model.UpdateAnswer();
+			Assert.AreEqual("", model.selected.answerText);
+			Assert.AreEqual(true, 
+				model.promptAndAnswers[2].isAnswerVisible);
+			model.selected.answerText = "WRIT";
+			model.UpdateAnswer();
+			Assert.AreEqual("WRIT", model.selected.answerText);
+			model.selected.answerText = "WRITIN";
+			model.UpdateAnswer();
+			Assert.AreEqual("WRITIN", model.selected.answerText);
+			model.selected.answerText = "WRITING";
+			model.UpdateAnswer();
+			Assert.AreEqual("", model.selected.answerText);
+			Assert.AreEqual(true, 
+				model.promptAndAnswers[3].isAnswerVisible);
+		}
+
+		[Test]
+		public void AddScoreAtLeast0()
+		{
+			var model = new SpellingModel();
+			model.score = 30;
+			model.AddScore(-1);
+			Assert.AreEqual(29, model.score);
+			model.AddScore(-20);
+			Assert.AreEqual(9, model.score);
+			model.AddScore(-20);
+			Assert.AreEqual(0, model.score);
+			model.AddScore(-1);
+			Assert.AreEqual(0, model.score);
 		}
 
 		[Test]

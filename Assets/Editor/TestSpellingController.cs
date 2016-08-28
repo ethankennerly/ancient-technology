@@ -65,6 +65,7 @@ namespace Finegamedesign.CityOfWords
 		private SpellingController AssertButtonSelectedToggles()
 		{
 			var controller = new SpellingController();
+			controller.model.score = 2000;
 			controller.Setup();
 			controller.Populate();
 			controller.Update();

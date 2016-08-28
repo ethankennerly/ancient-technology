@@ -16,7 +16,7 @@ namespace Finegamedesign.CityOfWords
 		public string empty = PromptModel.empty;
 		public int letterMax = 8;
 		public int promptMax = 4;
-		public int score = 2000;
+		public int score = 4000;
 		public int scorePerHint = -20;
 		public bool isExitNow = false;
 		public bool isAnswerAllNow = false;
@@ -114,6 +114,8 @@ namespace Finegamedesign.CityOfWords
 			}
 		}
 
+		// Do not count answer when entering text of a visible answer.
+		// Test case:  iamevn says ...  Aug 28, 2016 @ 1:15pm "Got a bug, I'm on 1927 in the alphabet category and I can't input what I think is the answer for CUNEIFORM because it starts with the answer to SUMMONS"  
 		public void UpdateAnswer()
 		{
 			string answer = selected.answerText;
@@ -123,7 +125,8 @@ namespace Finegamedesign.CityOfWords
 			for (index = 0; index < DataUtil.Length(promptAndAnswers); index++)
 			{
 				prompt = promptAndAnswers[index];
-				if (answer == prompt.answerText && answer != empty)
+				if (answer == prompt.answerText && answer != empty 
+				&& !prompt.isAnswerVisible)
 				{
 					isAnswerNow = true;
 					prompt.ShowAnswer(true);
@@ -180,6 +183,15 @@ namespace Finegamedesign.CityOfWords
 			selected.answerText = "";
 		}
 
+		public void AddScore(int amount)
+		{
+			score += amount;
+			if (score < 0)
+			{
+				score = 0;
+			}
+		}
+
 		public bool Toggle(int letterButtonIndex)
 		{
 			bool isSelectedNext = !(isLetterSelects[letterButtonIndex]);
@@ -190,11 +202,7 @@ namespace Finegamedesign.CityOfWords
 				selected.answerText += letter;
 				selected.answerTexts[length] = letter;
 				letterButtonsSelected[length] = letterButtonIndex;
-				score--;
-				if (score < 0)
-				{
-					score = 0;
-				}
+				AddScore(-1);
 			}
 			else
 			{
@@ -228,7 +236,7 @@ namespace Finegamedesign.CityOfWords
 		{
 			if (PromptModel.ShowNextLetter(promptAndAnswers))
 			{
-				score += scorePerHint;
+				AddScore(scorePerHint);
 			}
 		}
 
