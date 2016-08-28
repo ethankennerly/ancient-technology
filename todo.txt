@@ -13,10 +13,12 @@ Spell word.  Reveal that word.  And Untoggle letters.
 Spell all words.  Return to building.
 Spell all words.  Reveal image on building panel.
 Spell one word.  Adjacent buildings available.
-
-TODO
 Test case:  2016-08-28 Jennifer expects to select word and type.
 	Read "Tap letters to spell the word related to the prompt"
+
+TODO
+Test case:  2016-08-27 Jennifer Russ expects hint!!!
+	Jennifer taps hint button.  Reveal next letter of next word.
 View topic.
 Return to partial or complete.  See those words completed.
 Layout building.
@@ -28,8 +30,6 @@ Jennifer builds rotunda in Unity editor.
 Jennifer builds 5 words.
 Return to words.  Load words completed so far.
 Jennifer plays at http://finegamedesign.com/cityofwords
-Test case:  2016-08-27 Jennifer Russ expects hint.
-	Jennifer taps hint button.  Reveal next letter of next word.
 Sound effects.  
 Screenshot.
 Submit to Ludum Dare.

@@ -181,6 +181,10 @@ namespace Finegamedesign.CityOfWords
 			return isSelectedNext;
 		}
 
+		public void Hint()
+		{
+		}
+
 		public void Exit()
 		{
 			isExitNow = true;

@@ -102,5 +102,31 @@ namespace Finegamedesign.CityOfWords
 			model.UpdateAnswer();
 			Assert.AreEqual(false, model.isAnswerAllNow);
 		}
+
+		[Test]
+		public void HintNextLetterScoreDown20()
+		{
+			var model = new SpellingModel();
+			model.table = SpellingController.Load("test_words.csv");
+			model.Setup();
+			model.Populate();
+			var prompts = model.promptAndAnswers;
+			Assert.AreEqual("PART", prompts[0].answerText);
+			Assert.AreEqual("TRAP", prompts[1].answerText);
+			Assert.AreEqual(model.empty, prompts[0].answerTexts[0]);
+			Assert.AreEqual(model.empty, prompts[0].answerTexts[1]);
+			Assert.AreEqual(model.empty, prompts[1].answerTexts[0]);
+			Assert.AreEqual(model.empty, prompts[1].answerTexts[1]);
+			model.Hint();
+			Assert.AreEqual("P", prompts[0].answerTexts[0]);
+			Assert.AreEqual(model.empty, prompts[0].answerTexts[1]);
+			Assert.AreEqual(model.empty, prompts[1].answerTexts[0]);
+			Assert.AreEqual(model.empty, prompts[1].answerTexts[1]);
+			model.Hint();
+			Assert.AreEqual("P", prompts[0].answerTexts[0]);
+			Assert.AreEqual(model.empty, prompts[0].answerTexts[1]);
+			Assert.AreEqual("T", prompts[1].answerTexts[0]);
+			Assert.AreEqual(model.empty, prompts[1].answerTexts[1]);
+		}
 	}
 }

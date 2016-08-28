@@ -9,6 +9,7 @@ namespace Finegamedesign.CityOfWords
 		public GameObject scoreText;
 		public GameObject topicText;
 		public GameObject exitButton;
+		public GameObject hintButton;
 		public GameObject[] letterButtons;
 		public GameObject[] letterButtonTexts;
 		public PromptView[] promptAndAnswers;
