@@ -38,8 +38,12 @@ namespace Finegamedesign.CityOfWords
 			Assert.AreEqual(model.empty, prompt.answerTexts[0]);
 			Assert.AreEqual("PART", prompt.answerText);
 			model.selected.answerText = "PAR";
+			model.isLetterSelects[0] = true;
+			model.isLetterSelects[3] = true;
 			model.UpdateAnswer();
 			Assert.AreEqual(model.empty, prompt.answerTexts[0]);
+			Assert.AreEqual(true, model.isLetterSelects[0]);
+			Assert.AreEqual(true, model.isLetterSelects[3]);
 			model.selected.answerText = "PART";
 			model.UpdateAnswer();
 			Assert.AreEqual("PART", prompt.answerText);
@@ -47,6 +51,9 @@ namespace Finegamedesign.CityOfWords
 			Assert.AreEqual("A", prompt.answerTexts[1]);
 			Assert.AreEqual("R", prompt.answerTexts[2]);
 			Assert.AreEqual("T", prompt.answerTexts[3]);
+			Assert.AreEqual(false, model.isLetterSelects[0], "Clear selected letters.");
+			Assert.AreEqual(false, model.isLetterSelects[3], "Clear selected letters.");
+			Assert.AreEqual(model.empty, model.selected.answerText);
 		}
 	}
 }

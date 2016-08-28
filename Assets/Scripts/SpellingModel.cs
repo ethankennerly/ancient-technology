@@ -79,6 +79,7 @@ namespace Finegamedesign.CityOfWords
 						prompt.answerTexts[letter] = answer[letter].ToString();
 						DebugUtil.Log("" + answer[letter] + " " + answer);
 					}
+					ClearSelected();
 				}
 			}
 		}
@@ -98,6 +99,7 @@ namespace Finegamedesign.CityOfWords
 				isLetterSelects[index] = false;
 				letterButtonsSelected[index] = -1;
 			}
+			selected.answerText = "";
 		}
 
 		public bool Toggle(int letterButtonIndex)
