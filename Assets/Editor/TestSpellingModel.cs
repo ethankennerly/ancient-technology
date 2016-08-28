@@ -65,6 +65,7 @@ namespace Finegamedesign.CityOfWords
 			model.table = SpellingController.Load("test_words.csv");
 			model.Setup();
 			model.Populate();
+			Assert.AreEqual(0, model.answerCount);
 			Assert.AreEqual("RAPTOR", 
 				model.promptAndAnswers[3].answerText);
 			model.UpdateAnswer();
@@ -74,6 +75,7 @@ namespace Finegamedesign.CityOfWords
 			model.promptAndAnswers[3].RevealAnswer(model.empty);
 			model.UpdateAnswer();
 			Assert.AreEqual(false, model.isAnswerAllNow);
+			Assert.AreEqual(3, model.answerCount);
 			model.promptAndAnswers[1].RevealAnswer(model.empty);
 			model.UpdateAnswer();
 			Assert.AreEqual(true, model.isAnswerAllNow);
@@ -82,6 +84,7 @@ namespace Finegamedesign.CityOfWords
 			Assert.AreEqual(false, model.isAnswerAllNow);
 			model.contentIndex = 1;
 			model.Populate();
+			Assert.AreEqual(0, model.answerCount);
 			Assert.AreEqual("CENTERS", 
 				model.promptAndAnswers[2].answerText);
 			Assert.AreEqual(model.empty, 
@@ -89,10 +92,12 @@ namespace Finegamedesign.CityOfWords
 			model.promptAndAnswers[0].RevealAnswer(model.empty);
 			model.promptAndAnswers[1].RevealAnswer(model.empty);
 			model.UpdateAnswer();
+			Assert.AreEqual(2, model.answerCount);
 			Assert.AreEqual(false, model.isAnswerAllNow);
 			model.promptAndAnswers[2].RevealAnswer(model.empty);
 			model.UpdateAnswer();
 			Assert.AreEqual(true, model.isAnswerAllNow);
+			Assert.AreEqual(3, model.answerCount);
 			model.isAnswerAllNow = false;
 			model.UpdateAnswer();
 			Assert.AreEqual(false, model.isAnswerAllNow);

@@ -21,6 +21,7 @@ namespace Finegamedesign.CityOfWords
 		public int[] letterButtonsSelected;
 		public bool isExitNow = false;
 		public bool isAnswerAllNow = false;
+		public int answerCount = 0;
 		private int tableIndex = 1;
 
 		public void Setup()
@@ -59,6 +60,7 @@ namespace Finegamedesign.CityOfWords
 
 		private void PopulatePrompts(string[] row)
 		{
+			answerCount = 0;
 			for (int p = 0; p < DataUtil.Length(promptAndAnswers); p++)
 			{
 				var prompt = new PromptModel();
@@ -100,6 +102,7 @@ namespace Finegamedesign.CityOfWords
 			}
 			if (isAnswerNow)
 			{
+				answerCount = 0;
 				isAnswerAllNow = true;
 				for (index = 0; index < DataUtil.Length(promptAndAnswers); index++)
 				{
@@ -107,6 +110,10 @@ namespace Finegamedesign.CityOfWords
 					if (!prompt.isAnswerVisible && empty != prompt.answerText)
 					{
 						isAnswerAllNow = false;
+					}
+					else if (prompt.isAnswerVisible)
+					{
+						answerCount++;
 					}
 				}
 			}
