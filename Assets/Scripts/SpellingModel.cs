@@ -20,6 +20,7 @@ namespace Finegamedesign.CityOfWords
 		public bool[] isLetterSelects;
 		public int[] letterButtonsSelected;
 		public bool isExitNow = false;
+		public bool isAnswerAllNow = false;
 
 		public void Setup()
 		{
@@ -75,11 +76,7 @@ namespace Finegamedesign.CityOfWords
 				PromptModel prompt = promptAndAnswers[index];
 				if (answer == prompt.answerText)
 				{
-					for (int letter = 0; letter < DataUtil.Length(answer); letter++)
-					{
-						prompt.answerTexts[letter] = answer[letter].ToString();
-						DebugUtil.Log("" + answer[letter] + " " + answer);
-					}
+					prompt.RevealAnswer(empty);
 					ClearSelected();
 				}
 			}

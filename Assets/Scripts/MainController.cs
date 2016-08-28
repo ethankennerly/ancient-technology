@@ -28,6 +28,12 @@ namespace Finegamedesign.CityOfWords
 			building.Update();
 			if (spelling.model.isExitNow)
 			{
+				spelling.model.isExitNow = false;
+				building.model.state = "spellingToBuilding";
+			}
+			else if (spelling.model.isAnswerAllNow)
+			{
+				spelling.model.isAnswerAllNow = false;
 				building.model.state = "spellingToBuilding";
 			}
 			AnimationView.SetState(view.state, building.model.state);

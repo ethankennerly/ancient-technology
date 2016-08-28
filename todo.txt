@@ -12,10 +12,11 @@ Spell word.  Reveal that word.
 Spell word.  Reveal that word.  And Untoggle letters.
 
 TODO
-Spell all words.  Reveal image.
 Spell all words.  Return and reveal image on building panel.
+Spell one word.  Adjacent buildings available.
 Layout building.
 See building data.
+Spell all words.  Reveal image.
 Select another building.  See those words to spell.
 Jennifer spells tree in Unity editor.
 Jennifer builds rotunda in Unity editor.

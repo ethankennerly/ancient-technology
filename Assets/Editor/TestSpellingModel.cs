@@ -44,6 +44,7 @@ namespace Finegamedesign.CityOfWords
 			Assert.AreEqual(model.empty, prompt.answerTexts[0]);
 			Assert.AreEqual(true, model.isLetterSelects[0]);
 			Assert.AreEqual(true, model.isLetterSelects[3]);
+			Assert.AreEqual(false, prompt.isAnswerVisible);
 			model.selected.answerText = "PART";
 			model.UpdateAnswer();
 			Assert.AreEqual("PART", prompt.answerText);
@@ -54,6 +55,16 @@ namespace Finegamedesign.CityOfWords
 			Assert.AreEqual(false, model.isLetterSelects[0], "Clear selected letters.");
 			Assert.AreEqual(false, model.isLetterSelects[3], "Clear selected letters.");
 			Assert.AreEqual(model.empty, model.selected.answerText);
+			Assert.AreEqual(true, prompt.isAnswerVisible);
+		}
+
+		[Test]
+		public void UpdateAnswerIsAnswerAllNow()
+		{
+			var model = new SpellingModel();
+			model.table = SpellingController.Load("test_words.csv");
+			model.Setup();
+			model.Populate();
 		}
 	}
 }
