@@ -8,15 +8,19 @@ Layout spelling.
 If untoggle letter that was not last letter, unselect all subsequent letters and this letter.
 See spelling data.
 Tap letter.  Reduce score by 1; score at least 0.
+Spell word.  Reveal that word.
 
 TODO
-Spell word.  Reveal that word.
+Spell word.  Reveal that word.  And Untoggle letters.
 Spell all words.  Reveal image.
 Layout building.
 See building data.
+Select another building.  See those words to spell.
 Jennifer spells tree in Unity editor.
 Jennifer builds rotunda in Unity editor.
-Jennifer plays at http://finegamedesign.com/ancient-technology
+Jennifer builds 5 words.
+Return to words.  Load words completed so far.
+Jennifer plays at http://finegamedesign.com/cityofwords
 Test case:  2016-08-27 Jennifer Russ expects hint.
 	Jennifer taps hint button.  Reveal next letter of next word.
 Sound effects.  

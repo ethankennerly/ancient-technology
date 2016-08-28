@@ -5,9 +5,9 @@ namespace Finegamedesign.CityOfWords
 	[System.Serializable]
 	public sealed class SpellingController
 	{
-		public static string[][] Load()
+		public static string[][] Load(string path = "words.csv")
 		{
-			string csv = StringUtil.Read("words.csv");
+			string csv = StringUtil.Read(path);
 			return StringUtil.ParseCsv(csv);
 		}
 
@@ -45,6 +45,7 @@ namespace Finegamedesign.CityOfWords
 		public void Update()
 		{
 			UpdateButtons();
+			model.Update();
 			UpdateView();
 		}
 

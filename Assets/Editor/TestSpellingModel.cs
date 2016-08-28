@@ -9,7 +9,7 @@ namespace Finegamedesign.CityOfWords
 		public void ScoreAtLeast0()
 		{
 			var model = new SpellingModel();
-			model.table = SpellingController.Load();
+			model.table = SpellingController.Load("test_words.csv");
 			model.Setup();
 			Assert.AreEqual(2000, model.score);
 			model.Populate();
@@ -24,6 +24,29 @@ namespace Finegamedesign.CityOfWords
 				model.Toggle(1);
 			}
 			Assert.AreEqual(0, model.score);
+		}
+
+		[Test]
+		public void UpdateAnswer()
+		{
+			var model = new SpellingModel();
+			model.table = SpellingController.Load("test_words.csv");
+			model.Setup();
+			model.Populate();
+			model.UpdateAnswer();
+			PromptModel prompt = model.promptAndAnswers[0];
+			Assert.AreEqual(model.empty, prompt.answerTexts[0]);
+			Assert.AreEqual("PART", prompt.answerText);
+			model.selected.answerText = "PAR";
+			model.UpdateAnswer();
+			Assert.AreEqual(model.empty, prompt.answerTexts[0]);
+			model.selected.answerText = "PART";
+			model.UpdateAnswer();
+			Assert.AreEqual("PART", prompt.answerText);
+			Assert.AreEqual("P", prompt.answerTexts[0]);
+			Assert.AreEqual("A", prompt.answerTexts[1]);
+			Assert.AreEqual("R", prompt.answerTexts[2]);
+			Assert.AreEqual("T", prompt.answerTexts[3]);
 		}
 	}
 }

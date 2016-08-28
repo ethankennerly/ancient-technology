@@ -66,6 +66,28 @@ namespace Finegamedesign.CityOfWords
 			}
 		}
 
+		public void UpdateAnswer()
+		{
+			string answer = selected.answerText;
+			for (int index = 0; index < DataUtil.Length(promptAndAnswers); index++)
+			{
+				PromptModel prompt = promptAndAnswers[index];
+				if (answer == prompt.answerText)
+				{
+					for (int letter = 0; letter < DataUtil.Length(answer); letter++)
+					{
+						prompt.answerTexts[letter] = answer[letter].ToString();
+						DebugUtil.Log("" + answer[letter] + " " + answer);
+					}
+				}
+			}
+		}
+
+		public void Update()
+		{
+			UpdateAnswer();
+		}
+
 		private void ClearSelected()
 		{
 			DataUtil.Clear(selected.answerTexts);
