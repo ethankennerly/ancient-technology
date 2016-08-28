@@ -19,7 +19,10 @@ namespace Finegamedesign.CityOfWords
 		{
 			model.table = Load();
 			model.Setup();
-			view = (SpellingView) SceneNodeView.FindObjectOfType(typeof(SpellingView));
+			if (null == view)
+			{
+				view = (SpellingView) SceneNodeView.FindObjectOfType(typeof(SpellingView));
+			}
 			for (int index = 0; index < DataUtil.Length(view.letterButtons); index++)
 			{
 				buttons.view.Listen(view.letterButtons[index]);

@@ -5,27 +5,29 @@ namespace Finegamedesign.CityOfWords
 	[System.Serializable]
 	public sealed class SpellingModel
 	{
-		public SpellingView view;
+		public static SpellingModel[] contents;
+		public static int contentCount;
+
 		public string[][] table;
 		public int topicColumn = 0;
 		public int lettersColumn = 1;
 		public int promptColumn = 2;
 		public int contentIndex = 0;
 		public string empty = PromptModel.empty;
-		public string[] letterButtonTexts;
 		public int letterMax = 8;
 		public int promptMax = 4;
 		public int score = 2000;
 		public int scorePerHint = -20;
+		public bool isExitNow = false;
+		public bool isAnswerAllNow = false;
+
+		public string[] letterButtonTexts;
 		public PromptModel[] promptAndAnswers;
 		public PromptModel selected;
 		public bool[] isLetterSelects;
 		public int[] letterButtonsSelected;
-		public bool isExitNow = false;
-		public bool isAnswerAllNow = false;
 		public int answerCount = 0;
 		public string topicText = "";
-		private int tableIndex = 1;
 
 		public void Setup()
 		{
@@ -33,16 +35,49 @@ namespace Finegamedesign.CityOfWords
 			promptAndAnswers = new PromptModel[promptMax];
 			selected = new PromptModel();
 			selected.answerTexts = new string[letterMax];
+			if (null != table)
+			{
+				contentCount = DataUtil.Length(table) - 1;
+				contents = new SpellingModel[contentCount];
+				for (int index = 0; index < contentCount; index++)
+				{
+					var content = new SpellingModel();
+					content.Setup();
+					content.PopulateRow(GetRow(index));
+					contents[index] = content;
+				}
+			}
+		}
+
+		private string[] GetRow(int contentIndex)
+		{
+			return table[contentIndex + 1];
 		}
 
 		public void Populate()
 		{
-			tableIndex = contentIndex + 1;
-			string[] row = table[tableIndex];
+			var content = contents[contentIndex];
+			ReferTo(content);
+			ClearSelected();
+		}
+
+		private void PopulateRow(string[] row)
+		{
 			PopulateLetterButtons(row);
 			PopulatePrompts(row);
 			topicText = row[topicColumn];
 			ClearSelected();
+		}
+
+		private void ReferTo(SpellingModel content)
+		{
+			answerCount = content.answerCount;
+			isLetterSelects = content.isLetterSelects;
+			letterButtonTexts = content.letterButtonTexts;
+			letterButtonsSelected = content.letterButtonsSelected;
+			promptAndAnswers = content.promptAndAnswers;
+			selected = content.selected;
+			topicText = content.topicText;
 		}
 
 		private void PopulateLetterButtons(string[] row)
@@ -104,9 +139,17 @@ namespace Finegamedesign.CityOfWords
 					prompt.isAnswerVisibleNow = false;
 				}
 			}
+			answerCount = 0;
+			for (index = 0; index < DataUtil.Length(promptAndAnswers); index++)
+			{
+				prompt = promptAndAnswers[index];
+				if (prompt.isAnswerVisible)
+				{
+					answerCount++;
+				}
+			}
 			if (isAnswerNow)
 			{
-				answerCount = 0;
 				isAnswerAllNow = true;
 				for (index = 0; index < DataUtil.Length(promptAndAnswers); index++)
 				{
@@ -114,10 +157,6 @@ namespace Finegamedesign.CityOfWords
 					if (!prompt.isAnswerVisible && empty != prompt.answerText)
 					{
 						isAnswerAllNow = false;
-					}
-					else if (prompt.isAnswerVisible)
-					{
-						answerCount++;
 					}
 				}
 			}

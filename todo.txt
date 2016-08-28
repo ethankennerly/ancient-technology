@@ -19,17 +19,17 @@ Test case:  2016-08-28 Jennifer expects to select word and type.
 Test case:  2016-08-27 Crest. Twig.  Jennifer Russ expects hint!!!
 	Jennifer taps hint button.  Reveal next letter of next word.
 View topic.
+Return to partial or complete.  See those words completed.
+	Array of spelling models in a model.
+Jennifer spells tree in Unity editor.
+Return to words.  Load words completed so far.
+If already completed words, do not subtract score.
 
 TODO
-Return to partial or complete.  See those words completed.
-Layout building.
-See building data.
+Layout buildings in a grid.
 Spell all words.  Reveal image in spelling view.
-Jennifer spells tree in Unity editor.
-Jennifer builds rotunda in Unity editor.
-Jennifer builds 5 words.
-Return to words.  Load words completed so far.
-Jennifer plays at http://finegamedesign.com/cityofwords
+I build rotunda in Unity editor.
+I build 5 words.
 Sound effects.  
 Screenshot.
 Submit to Ludum Dare.
@@ -37,8 +37,9 @@ Read comment.
 Animate spell word.
 Animate spell all words.
 Animate complete.
+Jennifer plays at http://finegamedesign.com/cityofwords
 Test case:  2016-08-27 Crest. Twig.  Jennifer Russ expects hint!!!
 	More related prompt.
-If already completed words, do not subtract score.
 If already completed words, spell any words.
 Background music.
+With each word spelled, shuffle letters.

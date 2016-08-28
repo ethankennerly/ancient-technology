@@ -165,5 +165,51 @@ namespace Finegamedesign.CityOfWords
 			model.Hint();
 			Assert.AreEqual(score + 5 * model.scorePerHint, model.score);
 		}
+
+		[Test]
+		public void PopulatePreviousHintAndAnswers()
+		{
+			var model = new SpellingModel();
+			model.table = SpellingController.Load("test_words.csv");
+			model.Setup();
+			model.Populate();
+			var prompts = model.promptAndAnswers;
+			Assert.AreEqual("PART", prompts[0].answerText);
+			Assert.AreEqual("TRAP", prompts[1].answerText);
+			Assert.AreEqual(model.empty, prompts[0].answerTexts[0]);
+			model.Hint();
+			Assert.AreEqual("P", prompts[0].answerTexts[0]);
+			prompts[1].ShowAnswer(true);
+			Assert.AreEqual("T", prompts[1].answerTexts[0]);
+			model.UpdateAnswer();
+			Assert.AreEqual(true, prompts[1].isAnswerVisible);
+			Assert.AreEqual(1, model.answerCount);
+			for (int round = 0; round < 2; round++)
+			{
+				model.contentIndex = 1;
+				model.Populate();
+				prompts = model.promptAndAnswers;
+				Assert.AreEqual("CREST", prompts[0].answerText);
+				Assert.AreEqual("ERECTS", prompts[1].answerText);
+				Assert.AreEqual(model.empty, prompts[0].answerTexts[0]);
+				Assert.AreEqual(model.empty, prompts[1].answerTexts[0]);
+				Assert.AreEqual(false, model.isLetterSelects[0]);
+				model.Toggle(0);
+				Assert.AreEqual(true, model.isLetterSelects[0]);
+				model.contentIndex = 0;
+				model.Populate();
+				prompts = model.promptAndAnswers;
+				Assert.AreEqual("PART", prompts[0].answerText);
+				Assert.AreEqual("TRAP", prompts[1].answerText);
+				Assert.AreEqual("P", prompts[0].answerTexts[0]);
+				Assert.AreEqual("T", prompts[1].answerTexts[0]);
+				model.UpdateAnswer();
+				Assert.AreEqual(true, prompts[1].isAnswerVisible);
+				Assert.AreEqual(1, model.answerCount);
+				Assert.AreEqual(false, model.isLetterSelects[0]);
+				model.Toggle(0);
+				Assert.AreEqual(true, model.isLetterSelects[0]);
+			}
+		}
 	}
 }
