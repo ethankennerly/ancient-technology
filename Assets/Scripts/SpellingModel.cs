@@ -14,6 +14,7 @@ namespace Finegamedesign.CityOfWords
 		public int lettersColumn = 1;
 		public int promptColumn = 2;
 		public int promptMax = 4;
+		public int score = 2000;
 		public PromptModel[] promptAndAnswers;
 		public PromptModel selected;
 		public bool[] isLetterSelects;
@@ -87,10 +88,14 @@ namespace Finegamedesign.CityOfWords
 				selected.answerText += letter;
 				selected.answerTexts[length] = letter;
 				letterButtonsSelected[length] = letterButtonIndex;
+				score--;
+				if (score < 0)
+				{
+					score = 0;
+				}
 			}
 			else
 			{
-				// length--;
 				selected.answerTexts[length] = empty;
 				letterButtonsSelected[length] = -1;
 				int last = DataUtil.LastIndexOf(selected.answerText, letter);

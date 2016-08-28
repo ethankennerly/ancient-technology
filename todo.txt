@@ -5,19 +5,22 @@ I manually play synogram, geomagic squares, word sudoku.
 Jennifer enjoys synogram, gives up on geomagic square.
 Wireframe spell, build, complete.
 Layout spelling.
-
-TODO
 If untoggle letter that was not last letter, unselect all subsequent letters and this letter.
 See spelling data.
+Tap letter.  Reduce score by 1; score at least 0.
+
+TODO
+Spell word.  Reveal that word.
+Spell all words.  Reveal image.
 Layout building.
-see building data.
-Jennifer sees wireframe.
+See building data.
 Jennifer spells tree in Unity editor.
 Jennifer builds rotunda in Unity editor.
 Jennifer plays at http://finegamedesign.com/ancient-technology
+Test case:  2016-08-27 Jennifer Russ expects hint.
+	Jennifer taps hint button.  Reveal next letter of next word.
 Sound effects.  
-Background music.
 Screenshot.
 Submit to Ludum Dare.
 Read comment.
-Jennifer taps hint button.  Reveal next letter of next word.
+Background music.

@@ -5,6 +5,12 @@ namespace Finegamedesign.CityOfWords
 	[System.Serializable]
 	public sealed class SpellingController
 	{
+		public static string[][] Load()
+		{
+			string csv = StringUtil.Read("words.csv");
+			return StringUtil.ParseCsv(csv);
+		}
+
 		public SpellingModel model = new SpellingModel();
 		public SpellingView view;
 		public ButtonController buttons = new ButtonController();
@@ -18,12 +24,6 @@ namespace Finegamedesign.CityOfWords
 			{
 				buttons.view.Listen(view.letterButtons[index]);
 			}
-		}
-
-		public string[][] Load()
-		{
-			string csv = StringUtil.Read("words.csv");
-			return StringUtil.ParseCsv(csv);
 		}
 
 		public void Populate()
@@ -53,6 +53,7 @@ namespace Finegamedesign.CityOfWords
 			ViewLetterButtons();
 			ViewPrompts();
 			ViewPrompt(model.selected, view.selected);
+			ViewScore();
 		}
 
 		private void ViewLetterButtons()
@@ -87,6 +88,11 @@ namespace Finegamedesign.CityOfWords
 				bool isVisible = letter < DataUtil.Length(prompt.answerText);
 				SceneNodeView.SetVisible(promptView.answers[letter], isVisible); 
 			}
+		}
+
+		private void ViewScore()
+		{
+			TextView.SetText(view.scoreText, model.score.ToString());
 		}
 	}
 }

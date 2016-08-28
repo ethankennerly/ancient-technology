@@ -42,8 +42,7 @@ namespace Finegamedesign.CityOfWords
 		[Test]
 		public void Load()
 		{
-			var controller = new SpellingController();
-			string[][] table = controller.Load();
+			string[][] table = SpellingController.Load();
 			Assert.AreEqual("topic", table[0][0]);
 			Assert.AreEqual("letters", table[0][1]);
 			Assert.AreEqual("prompt", table[0][2]);
@@ -69,6 +68,9 @@ namespace Finegamedesign.CityOfWords
 			controller.Setup();
 			controller.Populate();
 			controller.Update();
+			Assert.AreEqual("2000",
+				TextView.GetText(
+					controller.view.scoreText));
 			Assert.AreEqual(false,
 				SceneNodeView.GetVisible(
 					controller.view.selected.answers[0]));
@@ -76,11 +78,18 @@ namespace Finegamedesign.CityOfWords
 			controller.buttons.view.Down(button0);
 			controller.Update();
 			AssertLetterSelected(controller, 0, 0);
+			Assert.AreEqual("1999",
+				TextView.GetText(
+					controller.view.scoreText),
+				"Each letter selected decrements score.");
 			controller.buttons.view.Down(button0);
 			controller.Update();
 			Assert.AreEqual(false,
 				SceneNodeView.GetVisible(
 					controller.view.selected.answers[0]));
+			Assert.AreEqual("1999",
+				TextView.GetText(
+					controller.view.scoreText));
 			controller.buttons.view.Down(button0);
 			controller.Update();
 			AssertLetterSelected(controller, 0, 0);
