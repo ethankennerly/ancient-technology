@@ -31,7 +31,7 @@ namespace Finegamedesign.CityOfWords
 		public void Update()
 		{
 			UpdateButtons();
-			for (int index = 0; index < DataUtil.Length(model.cellStates); index++)
+			for (int index = 0; index < DataUtil.Length(view.cellStates); index++)
 			{
 				AnimationView.SetState(view.cellStates[index], model.cellStates[index]);
 			}
