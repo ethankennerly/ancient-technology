@@ -34,6 +34,10 @@ namespace Finegamedesign.CityOfWords
 			}
 			else if (spelling.model.isExitNow)
 			{
+				if (1 <= spelling.model.answerCount)
+				{
+					building.model.UnlockAdjacent();
+				}
 				spelling.model.isExitNow = false;
 				building.model.state = "spellingToBuilding";
 			}
