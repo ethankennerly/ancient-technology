@@ -65,6 +65,37 @@ namespace Finegamedesign.CityOfWords
 			model.table = SpellingController.Load("test_words.csv");
 			model.Setup();
 			model.Populate();
+			Assert.AreEqual("RAPTOR", 
+				model.promptAndAnswers[3].answerText);
+			model.UpdateAnswer();
+			Assert.AreEqual(false, model.isAnswerAllNow);
+			model.promptAndAnswers[0].RevealAnswer(model.empty);
+			model.promptAndAnswers[2].RevealAnswer(model.empty);
+			model.promptAndAnswers[3].RevealAnswer(model.empty);
+			model.UpdateAnswer();
+			Assert.AreEqual(false, model.isAnswerAllNow);
+			model.promptAndAnswers[1].RevealAnswer(model.empty);
+			model.UpdateAnswer();
+			Assert.AreEqual(true, model.isAnswerAllNow);
+			model.isAnswerAllNow = false;
+			model.UpdateAnswer();
+			Assert.AreEqual(false, model.isAnswerAllNow);
+			model.contentIndex = 1;
+			model.Populate();
+			Assert.AreEqual("CENTERS", 
+				model.promptAndAnswers[2].answerText);
+			Assert.AreEqual(model.empty, 
+				model.promptAndAnswers[3].answerText);
+			model.promptAndAnswers[0].RevealAnswer(model.empty);
+			model.promptAndAnswers[1].RevealAnswer(model.empty);
+			model.UpdateAnswer();
+			Assert.AreEqual(false, model.isAnswerAllNow);
+			model.promptAndAnswers[2].RevealAnswer(model.empty);
+			model.UpdateAnswer();
+			Assert.AreEqual(true, model.isAnswerAllNow);
+			model.isAnswerAllNow = false;
+			model.UpdateAnswer();
+			Assert.AreEqual(false, model.isAnswerAllNow);
 		}
 	}
 }

@@ -32,4 +32,6 @@ Read comment.
 Animate spell word.
 Animate spell all words.
 Animate complete.
+If already completed words, do not subtract score.
+If already completed words, spell any words.
 Background music.

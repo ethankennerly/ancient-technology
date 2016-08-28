@@ -4,9 +4,10 @@ namespace Finegamedesign.CityOfWords
 {
 	public sealed class PromptModel
 	{
-		public string[] answerTexts;
+		public string[] answerTexts = new string[0];
 		public string answerText = "";
 		public bool isAnswerVisible = false;
+		public bool isAnswerVisibleNow = false;
 		public string promptText = "";
 
 		public void PopulateAnswer(string answer, int letterMax, string empty)
@@ -23,11 +24,13 @@ namespace Finegamedesign.CityOfWords
 				answerTexts[letter] = empty;
 			}
 			isAnswerVisible = false;
+			isAnswerVisibleNow = false;
 		}
 
 		public void RevealAnswer(string empty)
 		{
 			isAnswerVisible = true;
+			isAnswerVisibleNow = true;
 			string answer = answerText;
 			int letter;
 			for (letter = 0; letter < DataUtil.Length(answer); letter++)

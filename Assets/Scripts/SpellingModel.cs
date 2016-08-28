@@ -7,7 +7,7 @@ namespace Finegamedesign.CityOfWords
 	{
 		public SpellingView view;
 		public string[][] table;
-		public int tableIndex = 1;
+		public int contentIndex = 0;
 		public string empty = "";
 		public string[] letterButtonTexts;
 		public int letterMax = 8;
@@ -21,6 +21,7 @@ namespace Finegamedesign.CityOfWords
 		public int[] letterButtonsSelected;
 		public bool isExitNow = false;
 		public bool isAnswerAllNow = false;
+		private int tableIndex = 1;
 
 		public void Setup()
 		{
@@ -32,6 +33,7 @@ namespace Finegamedesign.CityOfWords
 
 		public void Populate()
 		{
+			tableIndex = contentIndex + 1;
 			string[] row = table[tableIndex];
 			PopulateLetterButtons(row);
 			PopulatePrompts(row);
@@ -57,13 +59,16 @@ namespace Finegamedesign.CityOfWords
 
 		private void PopulatePrompts(string[] row)
 		{
-			for (int index = promptColumn; index < DataUtil.Length(row); index += 2)
+			for (int p = 0; p < DataUtil.Length(promptAndAnswers); p++)
 			{
 				var prompt = new PromptModel();
-				prompt.promptText = row[index];
-				string answer = row[index + 1];
-				prompt.PopulateAnswer(answer, letterMax, empty);
-				int p = (int)((index - promptColumn) / 2);
+				int index = p * 2 + promptColumn;
+				if (index < DataUtil.Length(row))
+				{
+					prompt.promptText = row[index];
+					string answer = row[index + 1];
+					prompt.PopulateAnswer(answer, letterMax, empty);
+				}
 				promptAndAnswers[p] = prompt;
 			}
 		}
@@ -71,13 +76,38 @@ namespace Finegamedesign.CityOfWords
 		public void UpdateAnswer()
 		{
 			string answer = selected.answerText;
-			for (int index = 0; index < DataUtil.Length(promptAndAnswers); index++)
+			int index;
+			bool isAnswerNow = false;
+			PromptModel prompt;
+			for (index = 0; index < DataUtil.Length(promptAndAnswers); index++)
 			{
-				PromptModel prompt = promptAndAnswers[index];
-				if (answer == prompt.answerText)
+				prompt = promptAndAnswers[index];
+				if (answer == prompt.answerText && answer != empty)
 				{
+					isAnswerNow = true;
 					prompt.RevealAnswer(empty);
 					ClearSelected();
+				}
+				else if (prompt.isAnswerVisibleNow)
+				{
+					isAnswerNow = true;
+					prompt.isAnswerVisibleNow = false;
+				}
+				else
+				{
+					prompt.isAnswerVisibleNow = false;
+				}
+			}
+			if (isAnswerNow)
+			{
+				isAnswerAllNow = true;
+				for (index = 0; index < DataUtil.Length(promptAndAnswers); index++)
+				{
+					prompt = promptAndAnswers[index];
+					if (!prompt.isAnswerVisible && empty != prompt.answerText)
+					{
+						isAnswerAllNow = false;
+					}
 				}
 			}
 		}
