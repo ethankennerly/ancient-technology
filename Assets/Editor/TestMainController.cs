@@ -20,7 +20,7 @@ namespace Finegamedesign.CityOfWords
 			view = controller.spelling.buttons.view;
 			view.Down(controller.spelling.view.exitButton);
 			controller.Update();
-			Assert.AreEqual("building", AnimationView.GetState(controller.view.state));
+			Assert.AreEqual("spellingToBuilding", AnimationView.GetState(controller.view.state));
 		}
 	}
 }

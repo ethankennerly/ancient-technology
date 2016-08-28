@@ -18,7 +18,7 @@ namespace Finegamedesign.CityOfWords
 			}
 		}
 
-		public void UpdateInput()
+		public void UpdateButtons()
 		{
 			buttons.Update();
 			int index = DataUtil.IndexOf(view.cellButtons, buttons.view.target);
@@ -30,7 +30,7 @@ namespace Finegamedesign.CityOfWords
 
 		public void Update()
 		{
-			UpdateInput();
+			UpdateButtons();
 			for (int index = 0; index < DataUtil.Length(model.cellStates); index++)
 			{
 				AnimationView.SetState(view.cellStates[index], model.cellStates[index]);

@@ -24,6 +24,7 @@ namespace Finegamedesign.CityOfWords
 			{
 				buttons.view.Listen(view.letterButtons[index]);
 			}
+			buttons.view.Listen(view.exitButton);
 		}
 
 		public void Populate()
@@ -39,6 +40,10 @@ namespace Finegamedesign.CityOfWords
 			if (0 <= letterButtonIndex)
 			{
 				model.Toggle(letterButtonIndex);
+			}
+			else if (view.exitButton == buttons.view.target)
+			{
+				model.Exit();
 			}
 		}
 

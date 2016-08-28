@@ -19,6 +19,7 @@ namespace Finegamedesign.CityOfWords
 		public PromptModel selected;
 		public bool[] isLetterSelects;
 		public int[] letterButtonsSelected;
+		public bool isExitNow = false;
 
 		public void Setup()
 		{
@@ -144,6 +145,11 @@ namespace Finegamedesign.CityOfWords
 			}
 			isLetterSelects[letterButtonIndex] = isSelectedNext;
 			return isSelectedNext;
+		}
+
+		public void Exit()
+		{
+			isExitNow = true;
 		}
 	}
 }
