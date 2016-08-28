@@ -9,10 +9,11 @@ If untoggle letter that was not last letter, unselect all subsequent letters and
 See spelling data.
 Tap letter.  Reduce score by 1; score at least 0.
 Spell word.  Reveal that word.
+Spell word.  Reveal that word.  And Untoggle letters.
 
 TODO
-Spell word.  Reveal that word.  And Untoggle letters.
 Spell all words.  Reveal image.
+Spell all words.  Return and reveal image on building panel.
 Layout building.
 See building data.
 Select another building.  See those words to spell.
@@ -27,4 +28,7 @@ Sound effects.
 Screenshot.
 Submit to Ludum Dare.
 Read comment.
+Animate spell word.
+Animate spell all words.
+Animate complete.
 Background music.
