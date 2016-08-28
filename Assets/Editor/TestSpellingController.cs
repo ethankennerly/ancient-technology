@@ -49,8 +49,17 @@ namespace Finegamedesign.CityOfWords
 			Assert.AreEqual("answer", table[0][3]);
 		}
 
-		[Test]
-		public void UpdateButtonSelectedToggles()
+		private void AssertLetterSelected(SpellingController controller, int index, int length)
+		{
+			Assert.AreEqual(true,
+				SceneNodeView.GetVisible(
+					controller.view.selected.answers[length]));
+			Assert.AreEqual(controller.model.letterButtonTexts[index],
+				TextView.GetText(
+					controller.view.selected.answerTexts[length]));
+		}
+
+		private SpellingController AssertButtonSelectedToggles()
 		{
 			var controller = new SpellingController();
 			controller.Setup();
@@ -62,12 +71,7 @@ namespace Finegamedesign.CityOfWords
 			var button0 = controller.view.letterButtons[0];
 			controller.buttons.view.Down(button0);
 			controller.Update();
-			Assert.AreEqual(true,
-				SceneNodeView.GetVisible(
-					controller.view.selected.answers[0]));
-			Assert.AreEqual(controller.model.letterButtonTexts[0],
-				TextView.GetText(
-					controller.view.selected.answerTexts[0]));
+			AssertLetterSelected(controller, 0, 0);
 			controller.buttons.view.Down(button0);
 			controller.Update();
 			Assert.AreEqual(false,
@@ -75,12 +79,57 @@ namespace Finegamedesign.CityOfWords
 					controller.view.selected.answers[0]));
 			controller.buttons.view.Down(button0);
 			controller.Update();
-			Assert.AreEqual(true,
+			AssertLetterSelected(controller, 0, 0);
+			controller.buttons.view.Down(button0);
+			controller.Update();
+			Assert.AreEqual(false,
 				SceneNodeView.GetVisible(
 					controller.view.selected.answers[0]));
-			Assert.AreEqual(controller.model.letterButtonTexts[0],
-				TextView.GetText(
-					controller.view.selected.answerTexts[0]));
+			return controller;
+		}
+
+		[Test]
+		public void UpdateButtonSelectedToggles()
+		{
+			AssertButtonSelectedToggles();
+		}
+
+		[Test]
+		public void UpdateButtonTogglesLettersAfter()
+		{
+			var controller = AssertButtonSelectedToggles();
+			var buttons = controller.view.letterButtons;
+			controller.buttons.view.Down(buttons[3]);
+			controller.Update();
+			AssertLetterSelected(controller, 3, 0);
+			controller.buttons.view.Down(buttons[2]);
+			controller.Update();
+			AssertLetterSelected(controller, 2, 1);
+			controller.buttons.view.Down(buttons[1]);
+			controller.Update();
+			AssertLetterSelected(controller, 1, 2);
+			controller.buttons.view.Down(buttons[2]);
+			controller.Update();
+			Assert.AreEqual(false,
+				SceneNodeView.GetVisible(
+					controller.view.selected.answers[2]));
+			Assert.AreEqual(false,
+				SceneNodeView.GetVisible(
+					controller.view.selected.answers[1]));
+			AssertLetterSelected(controller, 3, 0);
+			controller.buttons.view.Down(buttons[3]);
+			controller.Update();
+			Assert.AreEqual(false,
+				SceneNodeView.GetVisible(
+					controller.view.selected.answers[0]));
+			controller.buttons.view.Down(buttons[1]);
+			controller.Update();
+			AssertLetterSelected(controller, 1, 0);
+			controller.buttons.view.Down(buttons[1]);
+			controller.Update();
+			Assert.AreEqual(false,
+				SceneNodeView.GetVisible(
+					controller.view.selected.answers[0]));
 		}
 	}
 }

@@ -17,6 +17,7 @@ namespace Finegamedesign.CityOfWords
 		public PromptModel[] promptAndAnswers;
 		public PromptModel selected;
 		public bool[] isLetterSelects;
+		public int[] letterButtonsSelected;
 
 		public void Setup()
 		{
@@ -68,6 +69,12 @@ namespace Finegamedesign.CityOfWords
 		{
 			DataUtil.Clear(selected.answerTexts);
 			isLetterSelects = new bool[letterMax];
+			letterButtonsSelected = new int[letterMax];
+			for (int index = 0; index < DataUtil.Length(letterButtonsSelected); index++)
+			{
+				isLetterSelects[index] = false;
+				letterButtonsSelected[index] = -1;
+			}
 		}
 
 		public bool Toggle(int letterButtonIndex)
@@ -79,11 +86,32 @@ namespace Finegamedesign.CityOfWords
 			{
 				selected.answerText += letter;
 				selected.answerTexts[length] = letter;
+				letterButtonsSelected[length] = letterButtonIndex;
 			}
 			else
 			{
+				// length--;
 				selected.answerTexts[length] = empty;
-				selected.answerText = StringUtil.RemoveEnd(selected.answerText);
+				letterButtonsSelected[length] = -1;
+				int last = DataUtil.LastIndexOf(selected.answerText, letter);
+				if (0 <= last)
+				{
+					for (int after = last; after < letterMax; after++)
+					{
+						int select = letterButtonsSelected[after];
+						if (-1 != select)
+						{
+							isLetterSelects[select] = false;
+						}
+						letterButtonsSelected[after] = -1;
+					}
+					selected.answerText = StringUtil.Remove(selected.answerText, last);
+				}
+				else
+				{
+					DebugUtil.Log("SpellingModel.Toggle: Did not expect <" 
+						+ letter + "> was not in <" + selected.answerText + ">");
+				}
 			}
 			isLetterSelects[letterButtonIndex] = isSelectedNext;
 			return isSelectedNext;
