@@ -30,14 +30,15 @@ Submit to Ludum Dare.
 6 entries of 4 words on ancient technology
 "iamevn says ...  Aug 28, 2016 @ 9:15pm Got a bug, I'm on 1927 in the alphabet category and I can't input what I think is the answer for CUNEIFORM because it starts with the answer to SUMMONS"  
 "ReboundGames says ...  Aug 28, 2016 @ 12:51pm I was really bad at this, got to 1648 but only with several hints. Seems like it would do nicely on android. The text was a bit blurry but still very legible."
-
-TODO
-Layout 6 buildings in a grid.
-Spell all words.  Reveal image in spelling view.
 I build 6 words.
 Read comment.
-Sound effects.  
+Layout 6 buildings in a grid.
 Screenshot.
+
+TODO
+Illustrate 9 plots.
+Sound effects.  
+Spell all words.  Reveal image in spelling view.
 Animate spell word.
 Animate spell all words.
 Animate complete.

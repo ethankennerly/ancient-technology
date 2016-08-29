@@ -1,0 +1,11 @@
+What went right:
+
++ Hints to spell in Morphos.
++ Ancient technology in Civilization.
++ Girlfriend supported my quiet coding.
+
+What went wrong:
+
+- Procrastinated deciding Friday night.
+- Unit tested controllers.
+- Wired UI and component in Unity.

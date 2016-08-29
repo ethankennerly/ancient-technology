@@ -7,7 +7,7 @@ Tap a plot to build.
 
 Tap letters to spell the word related to the prompt. 
 
-Playtesters: Jennifer Russ 
+Playtesters: Jennifer Russ, iamevn, ReboundGames.
 
 Work in progress. 
 
