@@ -36,7 +36,7 @@ namespace Finegamedesign.CityOfWords
 			{
 				if (1 <= spelling.model.answerCount)
 				{
-					building.model.UnlockAdjacent();
+					building.model.Answer(spelling.model.answerCount);
 				}
 				spelling.model.isExitNow = false;
 				building.model.state = "spellingToBuilding";

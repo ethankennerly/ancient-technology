@@ -30,6 +30,15 @@ namespace Finegamedesign.CityOfWords
 			}
 		}
 
+		public void Answer(int count)
+		{
+			if (cellStates[selectedIndex] != "complete")
+			{
+				cellStates[selectedIndex] = "answer_" + count;
+			}
+			UnlockAdjacent();
+		}
+
 		public void Complete()
 		{
 			cellStates[selectedIndex] = "complete";
